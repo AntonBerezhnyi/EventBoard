@@ -1,36 +1,25 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Event Board</title>
-</head>
-<body>
-    <div>
-        <h3>Order tickets</h3>
-        <table>
-            <tr>
-                <td><p>Event name</p></td>
-                <td><p>Orginizer</p></td>
-                <td><p>Date</p></td>
-                <td><p>Price</p></td>
-                <td></td>
-            </tr>
-            @foreach (var b in ViewBag.Events)
+<div>
+    <h3>Events in your city</h3>
+    <table>
+        <tr class="header">
+            <td><p>Event</p></td>
+            <td><p>Orginizer</p></td>
+            <td><p>Date</p></td>
+            <td><p>Price</p></td>
+            <td></td>
+        </tr>
+        @foreach (var b in ViewBag.Events)
             {
-                <tr>
-                    <td><p>@b.Name</p></td>
-                    <td><p>@b.Orginizer</p></td>
-                    <td><p>@b.Date</p></td>
-                    <td><p>@b.Price</p></td>
-                    <td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>
-                </tr>
-            }
-        </table>
-    </div>
-</body>
-</html>
+            <tr>
+                <td><p>@b.Name</p></td>
+                <td><p>@b.Orginizer</p></td>
+                <td><p>@b.Date</p></td>
+                <td><p>@b.Price</p></td>
+                <td><p><a href="/Home/Buy/@b.Id">Buy</a></p></td>
+            </tr>
+        }
+    </table>
+</div>

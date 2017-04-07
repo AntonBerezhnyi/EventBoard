@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using EventBoard.Models;
 
@@ -31,12 +29,17 @@ namespace EventBoard.Controllers
         [HttpPost]
         public string Buy(Purchase purchase)
         {
-            purchase.Date = DateTime.Now;
+            purchase.Date = getToday();
             // добавляем информацию о покупке в базу данных
             db.Purchases.Add(purchase);
             // сохраняем в бд все изменения
             db.SaveChanges();
-            return "Спасибо, " + purchase.Person + ", за покупку!";
+            return "Thank you , " + purchase.Person + ", for purchase!";
+        }
+
+        private DateTime getToday()
+        {
+            return DateTime.Now;
         }
     }
 }
